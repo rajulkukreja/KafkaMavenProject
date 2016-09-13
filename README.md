@@ -18,10 +18,10 @@ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 -
 6) List Topic
 bin/kafka-topics.sh --list --zookeeper localhost:2181
 
-7) Start Producer
+7) Start Console Producer
 bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test 
 
-8) Start Consumer
+8) Start Console Consumer
 bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
 
 
@@ -29,4 +29,25 @@ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beg
 ========================================================================
 
 
+For Running above Project :- 
 
+How To Compile
+mvn clean package
+
+
+How To Run
+
+1) Start Zookeeper
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+2) Start Broker
+bin/kafka-server-start.sh config/server.properties
+
+3) Topic Creation
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+
+4) Java producer example
+java -cp ./target/KafkaMavenExample-0.0.1-SNAPSHOT.jar com.kafka.examples.SampleProducer
+
+5) Java consumer example
+java -cp ./target/KafkaMavenExample-0.0.1-SNAPSHOT.jar com.kafka.examples.SampleConsumer
